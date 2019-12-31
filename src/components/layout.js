@@ -67,7 +67,7 @@ export default ({ children, location }) => (
                 style={{
                   boxShadow: 'none',
                   textDecoration: 'none',
-                  color: 'inherit',
+                  color: 'white',
                 }}
                 to={'/'}
               >
