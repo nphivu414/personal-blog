@@ -6,6 +6,7 @@ import { graphql } from 'gatsby'
 
 import Bio from '../components/Bio'
 import Layout from '../components/layout'
+import MaterialThemeProvider from '../theme/MaterialThemeProvider'
 import { rhythm } from '../utils/typography'
 
 class BlogIndex extends React.Component {
@@ -19,30 +20,34 @@ class BlogIndex extends React.Component {
     const location = get(this, 'props.location')
 
     return (
-      <Layout location={location}>
-        <Helmet title={siteTitle} />
-        <Bio settings={author} />
-        {posts.map(({ node }) => {
-          const title = get(node, 'title') || node.slug
-          return (
-            <div key={node.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: 'none' }} to={`posts/${node.slug}`}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.created}</small>
-              <p
-                dangerouslySetInnerHTML={{ __html: node.metadata.description }}
-              />
-            </div>
-          )
-        })}
-      </Layout>
+      <MaterialThemeProvider>
+        <Layout location={location}>
+          <Helmet title={siteTitle} />
+          <Bio settings={author} />
+          {posts.map(({ node }) => {
+            const title = get(node, 'title') || node.slug
+            return (
+              <div key={node.slug}>
+                <h3
+                  style={{
+                    marginBottom: rhythm(1 / 4),
+                  }}
+                >
+                  <Link style={{ boxShadow: 'none' }} to={`posts/${node.slug}`}>
+                    {title}
+                  </Link>
+                </h3>
+                <small>{node.created}</small>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: node.metadata.description,
+                  }}
+                />
+              </div>
+            )
+          })}
+        </Layout>
+      </MaterialThemeProvider>
     )
   }
 }

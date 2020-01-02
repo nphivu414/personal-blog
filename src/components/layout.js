@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { StaticQuery, graphql } from 'gatsby'
 
+import Header from '../components/Header'
 import cosmicjsLogo from '../../static/cosmicjs.svg'
 import gatsbyLogo from '../../static/gatsby.png'
 import { rhythm, scale } from '../utils/typography'
@@ -104,7 +105,8 @@ export default ({ children, location }) => (
       }
       return (
         <div>
-          {header}
+          {/* {header} */}
+          <Header />
           <div
             style={{
               marginLeft: 'auto',
@@ -132,7 +134,7 @@ export default ({ children, location }) => (
               }}
             >
               <img
-                src={gatsbyLogo}
+                // src={gatsbyLogo}
                 alt="Gatsby JS"
                 style={{
                   width: '20px',
