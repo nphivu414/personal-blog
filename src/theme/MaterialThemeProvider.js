@@ -1,24 +1,38 @@
-import React from 'react'
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
-import { orange } from '@material-ui/core/colors'
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: '#757ce8',
-      main: '#3f50b5',
-      dark: '#002884',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#000',
-    },
-  },
-})
+import React, { useContext } from 'react';
+import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
+import ThemeContext from './themeContext';
 
 export default function MaterialThemeProvider(props) {
-  return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+  const themeContext = useContext(ThemeContext);
+  
+  const theme = createMuiTheme({
+    palette: {
+      type: themeContext.themeType,
+      primary: {
+        light: '#515b5f',
+        main: '#263238',
+        dark: '#1a2327',
+        contrastText: '#fff',
+      },
+      secondary: {
+        light: '#33eb91',
+        main: '#00e676',
+        dark: '#00a152',
+        contrastText: '#fff',
+      },
+    },
+  });
+  const useStyles = makeStyles(() => ({
+    root: {
+        backgroundColor: theme.palette.background.default,
+        color: theme.palette.text.primary,
+    },
+  }));
+  const styles = useStyles();
+
+  return (
+    <div className={styles.root}>
+      <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+    </div>
+  );
 }

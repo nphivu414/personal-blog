@@ -3,6 +3,7 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-material-ui`,
+    'gatsby-plugin-root-import',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -33,4 +34,4 @@ module.exports = {
       },
     },
   ],
-}
+};

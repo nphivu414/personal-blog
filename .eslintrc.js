@@ -8,6 +8,7 @@ module.exports = {
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    semi: ['error', 'always'],
   },
   globals: {
     __PATH_PREFIX__: true,
