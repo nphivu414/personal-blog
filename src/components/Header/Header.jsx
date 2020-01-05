@@ -73,7 +73,7 @@ function Header(props) {
         </Container>
       </AppBar>
       <Parallax
-        blur={{ min: -10, max: 15 }}
+        blur={3}
         bgImageStyle={{
           top: '-40%'
         }}
@@ -81,9 +81,12 @@ function Header(props) {
         bgImageAlt={title}
         strength={200}
       >
-        <div style={{ height: '450px' }}>
-          <Typography variant="h2" gutterBottom>
-            h2. Heading
+        <div className={classes.parallaxBackground}>
+          <Typography className={classes.parallaxBackgroundTextColor} variant="h3" gutterBottom>
+            Welcome to Vu Nguyen's Blog
+          </Typography>
+          <Typography className={classes.parallaxBackgroundTextColor} variant="h6">
+            Thoughts, stories and ideas.
           </Typography>
         </div>
       </Parallax>

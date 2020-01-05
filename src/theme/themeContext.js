@@ -1,5 +1,5 @@
 import React from 'react';
 const ThemeContext = React.createContext({
-    themeType: 'dark'
+  themeType: 'dark'
 });
 export default ThemeContext;

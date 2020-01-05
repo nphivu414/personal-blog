@@ -51,6 +51,16 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
+  parallaxBackground: {
+    height: 450,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column'
+  },
+  parallaxBackgroundTextColor: {
+    color: 'white'
+  }
 }));
 
 export default useStyles;

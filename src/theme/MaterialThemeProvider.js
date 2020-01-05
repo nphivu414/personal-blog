@@ -9,9 +9,9 @@ export default function MaterialThemeProvider(props) {
     palette: {
       type: themeContext.themeType,
       primary: {
-        light: '#515b5f',
-        main: '#263238',
-        dark: '#1a2327',
+        light: '#484848',
+        main: '#212121',
+        dark: '#000000',
         contrastText: '#fff',
       },
       secondary: {
@@ -24,8 +24,8 @@ export default function MaterialThemeProvider(props) {
   });
   const useStyles = makeStyles(() => ({
     root: {
-        backgroundColor: theme.palette.background.default,
-        color: theme.palette.text.primary,
+      backgroundColor: theme.palette.background.default,
+      color: theme.palette.text.primary,
     },
   }));
   const styles = useStyles();
