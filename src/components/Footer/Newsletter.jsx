@@ -10,9 +10,12 @@ function Newsletter(props) {
       <Container>
         <Grid container spacing={3}>
           <Grid item xs={12} lg={6}>
-            <Typography variant="h5" gutterBottom={10}>STAY UPDATE WITH US !</Typography>
+            <Typography variant="h5" gutterBottom={10}>
+              STAY UPDATE WITH US !
+            </Typography>
             <Typography variant="body1">
-                Subscribe to our newsletter and get update directly in your inbox. You can unsubscribe anytime.
+              Subscribe to our newsletter and get update directly in your inbox.
+              You can unsubscribe anytime.
             </Typography>
           </Grid>
           <Grid item xs={12} lg={6}>

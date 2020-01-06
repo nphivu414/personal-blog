@@ -6,12 +6,15 @@ const useStyles = makeStyles(theme => ({
   },
   newsletter: {
     backgroundColor: theme.palette.secondary.dark,
-    padding: '35px 0'
+    padding: '35px 0',
   },
   footerBottom: {
     paddingTop: 35,
-    background: theme.palette.primary.main
-  }
+    background: theme.palette.primary.main,
+  },
+  socialIcon: {
+    marginRight: 10,
+  },
 }));
 
 export default useStyles;

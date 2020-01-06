@@ -3,13 +3,14 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  extends: `react-app`,
-  plugins: ['react', 'react-hooks'],
+  extends: ['react-app', 'prettier'],
+  plugins: ['react', 'react-hooks', 'prettier'],
   rules: {
+    "prettier/prettier": "error",
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
-    semi: ['error', 'always'],
-    "indent": ["error", 2]
+    // semi: ['error', 'always'],
+    indent: ["error", 2]
   },
   globals: {
     __PATH_PREFIX__: true,
