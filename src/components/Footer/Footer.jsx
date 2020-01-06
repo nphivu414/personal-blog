@@ -1,34 +1,105 @@
 import React from 'react';
-import { Container, Grid, Typography, TextField } from '@material-ui/core';
-import { Send } from '@material-ui/icons';
+import { Container, Grid, List, ListSubheader, ListItem, ListItemAvatar, ListItemText, Avatar, Typography, Divider } from '@material-ui/core';
+import Newsletter from './Newsletter';
 import useStyles from './style';
 
 function Footer(props) {
   const classes = useStyles();
   return (
     <div className={classes.footer}>
-      <Container>
-        <Grid container spacing={3}>
-          <Grid item xs={12} lg={6}>
-            <Typography variant="h5" gutterBottom={10}>STAY UPDATE WITH US !</Typography>
-            <Typography variant="body1">
-                Subscribe to our newsletter and get update directly in your inbox. You can unsubscribe anytime.
-            </Typography>
+      <Newsletter/>
+      <div className={classes.footerBottom}>
+        <Container>
+          <Grid container spacing={10}>
+            <Grid item lg={4}>
+              <List className={classes.root} subheader={
+                <Typography variant="h5">
+                  Recent Posts
+                </Typography>
+              }>
+                <ListItem alignItems="flex-start">
+                  <ListItemAvatar>
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary="Brunch this weekend?"
+                    secondary={
+                      <React.Fragment>
+                        <Typography
+                          component="span"
+                          variant="body2"
+                          className={classes.inline}
+                          color="textPrimary"
+                        >
+                          Ali Connors
+                        </Typography>
+                        {" — I'll be in your neighborhood doing errands this…"}
+                      </React.Fragment>
+                    }
+                  />
+                </ListItem>
+                <Divider variant="inset" component="li" />
+                <ListItem alignItems="flex-start">
+                  <ListItemAvatar>
+                    <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary="Summer BBQ"
+                    secondary={
+                      <React.Fragment>
+                        <Typography
+                          component="span"
+                          variant="body2"
+                          className={classes.inline}
+                          color="textPrimary"
+                        >
+                to Scott, Alex, Jennifer
+                        </Typography>
+                        {" — Wish I could come, but I'm out of town this…"}
+                      </React.Fragment>
+                    }
+                  />
+                </ListItem>
+                <Divider variant="inset" component="li" />
+                <ListItem alignItems="flex-start">
+                  <ListItemAvatar>
+                    <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary="Oui Oui"
+                    secondary={
+                      <React.Fragment>
+                        <Typography
+                          component="span"
+                          variant="body2"
+                          className={classes.inline}
+                          color="textPrimary"
+                        >
+                Sandra Adams
+                        </Typography>
+                        {' — Do you have Paris recommendations? Have you ever…'}
+                      </React.Fragment>
+                    }
+                  />
+                </ListItem>
+              </List>
+            </Grid>
+            <Grid item lg={4}>
+              <List className={classes.root} subheader={
+                <Typography variant="h5">
+                  Popular Tags
+                </Typography>
+              }>
+                
+              </List>
+            </Grid>
+            <Grid item lg={4}>
+
+            </Grid>
           </Grid>
-          <Grid item xs={12} lg={6}>
-            <form noValidate autoComplete="off">
-              <Grid container spacing={1} alignItems="flex-end">
-                <Grid item xs={11}>
-                  <TextField label="Your Email" color="secondary" fullWidth />
-                </Grid>
-                <Grid item xs={1}>
-                  <Send />
-                </Grid>
-              </Grid>
-            </form>
-          </Grid>
-        </Grid>
-      </Container>
+        </Container>
+      </div>
+      
     </div>
   );
 }
