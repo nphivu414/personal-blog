@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 
 import Bio from '../components/Bio';
+import BlogList from '../components/Blog/BlogList';
 import Layout from '../components/layout';
 import MaterialThemeProvider from '../theme/MaterialThemeProvider';
 import { rhythm } from '../utils/typography';
@@ -18,13 +19,14 @@ class BlogIndex extends React.Component {
     const posts = get(this, 'props.data.allCosmicjsPosts.edges');
     const author = get(this, 'props.data.cosmicjsSettings.metadata');
     const location = get(this, 'props.location');
-
+    console.log('post', posts);
     return (
       <MaterialThemeProvider>
         <Layout location={location}>
           <Helmet title={siteTitle} />
-          <Bio settings={author} />
-          {posts.map(({ node }) => {
+          {/* <Bio settings={author} /> */}
+          <BlogList data={posts}/>
+          {/* {posts.map(({ node }) => {
             const title = get(node, 'title') || node.slug;
             return (
               <div key={node.slug}>
@@ -45,7 +47,7 @@ class BlogIndex extends React.Component {
                 />
               </div>
             );
-          })}
+          })} */}
         </Layout>
       </MaterialThemeProvider>
     );
@@ -61,6 +63,9 @@ export const pageQuery = graphql`
         node {
           metadata {
             description
+            hero {
+              imgix_url
+            }
           }
           slug
           title
