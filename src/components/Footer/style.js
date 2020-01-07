@@ -10,7 +10,10 @@ const useStyles = makeStyles(theme => ({
   },
   footerBottom: {
     paddingTop: 35,
-    background: theme.palette.primary.main,
+    background:
+      theme.palette.type === 'dark'
+        ? theme.palette.primary.main
+        : theme.palette.grey[200],
   },
   socialIcon: {
     marginRight: 10,

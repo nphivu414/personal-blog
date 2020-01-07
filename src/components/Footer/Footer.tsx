@@ -14,8 +14,8 @@ import { Facebook, Twitter, LinkedIn } from '@material-ui/icons';
 import Newsletter from './Newsletter';
 import useStyles from './style';
 
-function Footer(props) {
-  const classes = useStyles();
+function Footer() {
+  const classes = useStyles({});
   return (
     <div className={classes.footer}>
       {/* <Newsletter /> */}
@@ -24,7 +24,34 @@ function Footer(props) {
           <Grid container spacing={10}>
             <Grid item lg={4}>
               <List
-                className={classes.root}
+                subheader={<Typography variant="h5">About Me</Typography>}
+              >
+                <ListItem>
+                  <Typography variant="body2" component="p" color="textSecondary">
+                    An ambitious developer who love to work with the latest
+                    technologies on challenging and diverse projects
+                  </Typography>
+                </ListItem>
+                <ListItem>
+                  <Typography variant="body2" component="p" color="textSecondary">
+                    I am eager for making websites, mobile apps with beautiful user interface and great user experience to make sure that people will enjoy every portion of my products.
+                  </Typography>
+                </ListItem>
+              </List>
+            </Grid>
+            <Grid item lg={2}>
+              <List
+                subheader={<Typography variant="h5">Follow Me</Typography>}
+              >
+                <ListItem>
+                  <Facebook className={classes.socialIcon} />
+                  <Twitter className={classes.socialIcon} />
+                  <LinkedIn className={classes.socialIcon} />
+                </ListItem>
+              </List>
+            </Grid>
+            <Grid item lg={6}>
+              <List
                 subheader={<Typography variant="h5">Recent Posts</Typography>}
               >
                 <ListItem alignItems="flex-start">
@@ -41,7 +68,6 @@ function Footer(props) {
                         <Typography
                           component="span"
                           variant="body2"
-                          className={classes.inline}
                           color="textPrimary"
                         >
                           Ali Connors
@@ -66,7 +92,6 @@ function Footer(props) {
                         <Typography
                           component="span"
                           variant="body2"
-                          className={classes.inline}
                           color="textPrimary"
                         >
                           to Scott, Alex, Jennifer
@@ -91,7 +116,6 @@ function Footer(props) {
                         <Typography
                           component="span"
                           variant="body2"
-                          className={classes.inline}
                           color="textPrimary"
                         >
                           Sandra Adams
@@ -103,31 +127,7 @@ function Footer(props) {
                 </ListItem>
               </List>
             </Grid>
-            <Grid item lg={4}>
-              <List
-                className={classes.root}
-                subheader={<Typography variant="h5">Follow Me</Typography>}
-              >
-                <ListItem>
-                  <Facebook className={classes.socialIcon} />
-                  <Twitter className={classes.socialIcon} />
-                  <LinkedIn className={classes.socialIcon} />
-                </ListItem>
-              </List>
-            </Grid>
-            <Grid item lg={4}>
-              <List
-                className={classes.root}
-                subheader={<Typography variant="h5">About Me</Typography>}
-              >
-                <ListItem>
-                  <Typography variant="body2" component="p">
-                    An ambitious developer who love to work with the latest
-                    technologies on challenging and diverse projects
-                  </Typography>
-                </ListItem>
-              </List>
-            </Grid>
+
           </Grid>
         </Container>
       </div>
