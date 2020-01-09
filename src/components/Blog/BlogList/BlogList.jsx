@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function BlogList(props) {
+function PostList(props) {
   const { data } = props;
   const classes = useStyles();
 
@@ -47,26 +47,20 @@ function BlogList(props) {
     <Grid container spacing={3} className={classes.grid}>
       {data.map(item => {
         const {
-          node: {
-            slug,
-            title,
-            created,
-            metadata: {
-              description,
-              hero: { imgix_url },
-            },
+          _id,
+          slug,
+          title,
+          created,
+          metadata: {
+            description,
+            hero: { imgix_url },
           },
         } = item;
         return (
-          <Grid item xs={12} sm={4} lg={4}>
+          <Grid key={_id} item xs={12} sm={4} lg={4}>
             <Card className={classes.card}>
               <CardActionArea>
                 <CardHeader
-                  action={
-                    <IconButton aria-label="settings">
-                      <MoreVertIcon />
-                    </IconButton>
-                  }
                   title={<Typography variant="button">{title}</Typography>}
                   subheader={
                     <Typography variant="subtitle2" color="textSecondary">
@@ -97,4 +91,4 @@ function BlogList(props) {
     </Grid>
   );
 }
-export default BlogList;
+export default PostList;

@@ -1,37 +1,37 @@
 import { Post } from './model/postModel'
-type blogList = {
+type postList = {
   data: Post[],
   error?: string,
 }
-type blogDetail = {
+type postDetail = {
   data: Post,
   error?: string,
 }
 export type blogState = {
   loadingStatus: loadingStatus,
-  blogList: blogList,
-  blogDetail: blogDetail,
+  postList: postList,
+  postDetail: postDetail,
 }
 
 type loadingStatus = {
-  isLoadingBlogList: boolean,
-  isLoadingBlogDetail: boolean,
+  isLoadingPostList: boolean,
+  isLoadingPostDetail: boolean,
 }
 
-export type blogListPayload = {
+export type postListPayload = {
   data: Post[],
   error?: string,
 }
 
 export const initialState: blogState = {
   loadingStatus: {
-    isLoadingBlogDetail: false,
-    isLoadingBlogList: false,
+    isLoadingPostDetail: false,
+    isLoadingPostList: false,
   },
-  blogList: {
+  postList: {
     data: []
   },
-  blogDetail: {
+  postDetail: {
     data: {
       content: '',
       metadata: {},

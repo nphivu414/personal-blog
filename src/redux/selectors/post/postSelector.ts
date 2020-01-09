@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
-import { blogState } from '../../slices/posts/state'
+import { RootState } from 'src/redux/rootReducer';
 
-export const getGameDetail = createSelector(
-  (state: blogState) => state.blogList.data,
-  (data) => data || []
+export const getPostList = createSelector(
+  (state: RootState) => state.post.postList,
+  (postList) => postList.data || []
 );

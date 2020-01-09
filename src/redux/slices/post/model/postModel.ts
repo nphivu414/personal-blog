@@ -9,6 +9,7 @@ interface PostMetadata {
 }
 
 interface Post {
+  _id: string,
   slug: string,
   title: string,
   content: string,

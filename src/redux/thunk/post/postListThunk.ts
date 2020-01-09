@@ -1,16 +1,16 @@
-import { loadBlogList, loadBlogListSuccess, loadBlogListError } from 'src/redux/slices/posts/postSlices';
+import { loadPostList, loadPostListSuccess, loadPostListError } from 'src/redux/slices/post/postSlices';
 import { loadPostListService } from 'src/service/postService';
 
-export function loadPostList(options) {
+export function loadPostListAction(options) {
   return async dispatch => {
-    dispatch(loadBlogList());
+    dispatch(loadPostList());
     try {
       const response = await loadPostListService();
-      dispatch(loadBlogListSuccess({
+      dispatch(loadPostListSuccess({
         data: response.data.objects
       }));
     } catch (error) {
-      dispatch(loadBlogListError(error.message));
+      dispatch(loadPostListError(error.message));
     }
   };
 }
