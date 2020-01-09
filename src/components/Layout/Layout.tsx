@@ -2,8 +2,7 @@ import * as React from 'react';
 import { get } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadSettingListAction } from 'src/redux/thunk/setting/settingListThunk';
-import { getSettingList } from 'src/redux/selectors/setting/settingSelector';
-
+import { getGeneralSetting } from 'src/redux/selectors/setting/settingSelector';
 
 import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
@@ -22,8 +21,7 @@ const { useEffect, useState, useCallback } = React;
 const Layout: React.FunctionComponent<LayoutProps> = (props) => {
   const { children } = props;
   const dispatch = useDispatch();
-  const settingList = useSelector(getSettingList);
-  const generalSetting = settingList[0];
+  const generalSetting = useSelector(getGeneralSetting);
 
   const siteTitle = get(generalSetting, 'metadata.site_heading');
   const homgePageHero = get(generalSetting, 'metadata.homepage_hero.imgix_url')

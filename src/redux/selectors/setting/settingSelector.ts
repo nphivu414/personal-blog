@@ -5,3 +5,8 @@ export const getSettingList = createSelector(
   (state: RootState) => state.setting.settingList,
   (settingList) => settingList.data || []
 );
+
+export const getGeneralSetting = createSelector(
+  (state: RootState) => state.setting.settingList,
+  (settingList) => settingList.data && settingList.data[0]
+);

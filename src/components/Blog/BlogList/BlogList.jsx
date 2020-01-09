@@ -7,11 +7,10 @@ import {
   CardMedia,
   CardContent,
   CardActionArea,
-  IconButton,
   Typography,
 } from '@material-ui/core';
 import { red } from '@material-ui/core/colors';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Link } from 'gatsby';
 
 const useStyles = makeStyles(theme => ({
   grid: {
@@ -58,33 +57,35 @@ function PostList(props) {
         } = item;
         return (
           <Grid key={_id} item xs={12} sm={4} lg={4}>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardHeader
-                  title={<Typography variant="button">{title}</Typography>}
-                  subheader={
-                    <Typography variant="subtitle2" color="textSecondary">
-                      {created}
+            <Link style={{ boxShadow: 'none' }} to={`posts/${slug}`}>
+              <Card className={classes.card}>
+                <CardActionArea>
+                  <CardHeader
+                    title={<Typography variant="button">{title}</Typography>}
+                    subheader={
+                      <Typography variant="subtitle2" color="textSecondary">
+                        {created}
+                      </Typography>
+                    }
+                  />
+                  <CardMedia
+                    className={classes.media}
+                    image={imgix_url}
+                    title="Paella dish"
+                  />
+                  <CardContent>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                      className={classes.descriptionText}
+                    >
+                      {description}
                     </Typography>
-                  }
-                />
-                <CardMedia
-                  className={classes.media}
-                  image={imgix_url}
-                  title="Paella dish"
-                />
-                <CardContent>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                    className={classes.descriptionText}
-                  >
-                    {description}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Link>
           </Grid>
         );
       })}
