@@ -1,28 +1,31 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import { Link } from 'gatsby'
-import get from 'lodash/get'
-import { graphql } from 'gatsby'
+import React from 'react';
+import { Provider } from 'react-redux';
+import Helmet from 'react-helmet';
+import { Link } from 'gatsby';
+import get from 'lodash/get';
+import { graphql } from 'gatsby';
+import store from 'src/redux/store';
 
-import Bio from '../components/Bio'
-import Layout from '../components/layout'
-import { rhythm, scale } from '../utils/typography'
+import Bio from 'src/components/Bio';
+import Layout from 'src/components/Layout';
+import { rhythm, scale } from 'src/utils/typography';
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.cosmicjsPosts
+    const post = this.props.data.cosmicjsPosts;
     const siteTitle = get(
       this.props,
       'data.cosmicjsSettings.metadata.site_title'
-    )
-    const author = get(this, 'props.data.cosmicjsSettings.metadata')
-    const location = get(this, 'props.location')
-    const { previous, next } = this.props.pageContext
+    );
+    const author = get(this, 'props.data.cosmicjsSettings.metadata');
+    const location = get(this, 'props.location');
+    const { previous, next } = this.props.pageContext;
 
     return (
-      <Layout location={location}>
-        <style>
-          {`
+      <Provider store={store}>
+        <Layout location={location}>
+          <style>
+            {`
           .post-content {
             text-align: justify;
           }
@@ -39,85 +42,86 @@ class BlogPostTemplate extends React.Component {
             }
           }
         `}
-        </style>
-        <Helmet title={`${post.title} | ${siteTitle}`} />
-        <div
-          style={{
-            marginTop: rhythm(1.4),
-          }}
-        >
-          <Link to="/">← Back to Posts</Link>
-        </div>
-        <h1
-          style={{
-            marginTop: rhythm(1),
-          }}
-        >
-          {post.title}
-        </h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: 'block',
-            marginBottom: rhythm(0.6),
-            marginTop: rhythm(-0.6),
-          }}
-        >
-          {post.created}
-        </p>
-        <div
-          className="post-hero"
-          style={{
-            backgroundColor: '#007ACC',
-            backgroundImage: `url("${post.metadata.hero.imgix_url}?w=2000")`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            marginBottom: rhythm(0.6),
-            position: 'relative',
-          }}
-        />
-        <div
-          className="post-content"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
-        <Bio settings={author} />
+          </style>
+          <Helmet title={`${post.title} | ${siteTitle}`} />
+          <div
+            style={{
+              marginTop: rhythm(1.4),
+            }}
+          >
+            <Link to="/">← Back to Posts</Link>
+          </div>
+          <h1
+            style={{
+              marginTop: rhythm(1),
+            }}
+          >
+            {post.title}
+          </h1>
+          <p
+            style={{
+              ...scale(-1 / 5),
+              display: 'block',
+              marginBottom: rhythm(0.6),
+              marginTop: rhythm(-0.6),
+            }}
+          >
+            {post.created}
+          </p>
+          <div
+            className="post-hero"
+            style={{
+              backgroundColor: '#007ACC',
+              backgroundImage: `url("${post.metadata.hero.imgix_url}?w=2000")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              marginBottom: rhythm(0.6),
+              position: 'relative',
+            }}
+          />
+          <div
+            className="post-content"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+          <hr
+            style={{
+              marginBottom: rhythm(1),
+            }}
+          />
+          <Bio settings={author} />
 
-        <ul
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
-            listStyle: 'none',
-            padding: 0,
-          }}
-        >
-          {previous && (
-            <li>
-              <Link to={`posts/${previous.slug}`} rel="prev">
-                ← {previous.title}
-              </Link>
-            </li>
-          )}
+          <ul
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
+              listStyle: 'none',
+              padding: 0,
+            }}
+          >
+            {previous && (
+              <li>
+                <Link to={`posts/${previous.slug}`} rel="prev">
+                  ← {previous.title}
+                </Link>
+              </li>
+            )}
 
-          {next && (
-            <li>
-              <Link to={`posts/${next.slug}`} rel="next">
-                {next.title} →
-              </Link>
-            </li>
-          )}
-        </ul>
-      </Layout>
-    )
+            {next && (
+              <li>
+                <Link to={`posts/${next.slug}`} rel="next">
+                  {next.title} →
+                </Link>
+              </li>
+            )}
+          </ul>
+        </Layout>
+      </Provider>
+    );
   }
 }
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -143,4 +147,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

@@ -2,6 +2,9 @@ module.exports = {
   plugins: [
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    // `gatsby-plugin-material-ui`,
+    `gatsby-plugin-root-import`,
+    `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -13,11 +16,11 @@ module.exports = {
       resolve: 'gatsby-source-cosmicjs',
       options: {
         bucketSlug: process.env.COSMIC_BUCKET,
-        objectTypes: ['posts','settings'],
+        objectTypes: ['posts', 'settings'],
         apiAccess: {
           read_key: process.env.COSMIC_READ_KEY,
-        }
-      }
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
@@ -32,4 +35,4 @@ module.exports = {
       },
     },
   ],
-}
+};
