@@ -1,4 +1,6 @@
-import React from 'react';
+import * as React from 'react';
+import { get } from 'lodash';
+import { useSelector } from 'react-redux';
 import {
   Container,
   Grid,
@@ -11,14 +13,19 @@ import {
   Divider,
 } from '@material-ui/core';
 import { Facebook, Twitter, LinkedIn } from '@material-ui/icons';
-import Newsletter from './Newsletter';
+import { getGeneralSetting } from 'src/redux/selectors/setting/settingSelector';
+
 import useStyles from './style';
 
-function Footer() {
+type FooterProps = {};
+
+const Footer: React.FunctionComponent<FooterProps> = () => {
   const classes = useStyles({});
+  const generalSetting = useSelector(getGeneralSetting);
+  const authorBio = get(generalSetting, 'metadata.author_bio');
+  const authorAvatar = get(generalSetting, 'metadata.author_avatar.imgix_url');
   return (
     <div className={classes.footer}>
-      {/* <Newsletter /> */}
       <div className={classes.footerBottom}>
         <Container>
           <Grid container spacing={10}>
@@ -26,16 +33,17 @@ function Footer() {
               <List
                 subheader={<Typography variant="h5">About Me</Typography>}
               >
-                <ListItem>
-                  <Typography variant="body2" component="p" color="textSecondary">
-                    An ambitious developer who love to work with the latest
-                    technologies on challenging and diverse projects
-                  </Typography>
-                </ListItem>
-                <ListItem>
-                  <Typography variant="body2" component="p" color="textSecondary">
-                    I am eager for making websites, mobile apps with beautiful user interface and great user experience to make sure that people will enjoy every portion of my products.
-                  </Typography>
+                <ListItem alignItems="flex-start">
+                  <ListItemAvatar>
+                    <Avatar alt="Cindy Baker" src={authorAvatar} />
+                  </ListItemAvatar>
+                  <ListItemText
+                    secondary={
+                      <Typography variant="body2" component="p" color="textSecondary">
+                        <div dangerouslySetInnerHTML={{ __html: authorBio }} />
+                      </Typography>
+                    }
+                  />
                 </ListItem>
               </List>
             </Grid>

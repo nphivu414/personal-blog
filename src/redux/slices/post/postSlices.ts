@@ -5,7 +5,7 @@ const postSlice = createSlice({
   name: 'post',
   initialState,
   reducers: {
-    loadPostList(state, action: PayloadAction<postListPayload>) {
+    loadPostList(state) {
       state.loadingStatus.isLoadingPostList = true;
     },
     loadPostListSuccess(state, action: PayloadAction<postListPayload>) {
