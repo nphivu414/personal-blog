@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "tslint-react",
+    "tslint-eslint-rules",
+    "tslint-config-prettier",
+    "tslint-react-hooks"
+  ],
+  "rules": {
+    "react-hooks-nesting": "error",
+    "indent": [
+      true,
+      "spaces",
+      2
+    ]
+  }
+}
