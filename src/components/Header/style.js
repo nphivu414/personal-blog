@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
     marginLeft: 0,
+    marginRight: theme.spacing(2),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
@@ -51,16 +52,24 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
+  parallax: {
+    marginTop: 55,
+  },
   parallaxBackground: {
-    height: 450,
+    height: 400,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    [theme.breakpoints.down('sm')]: {
+      height: 225,
+    },
   },
   parallaxBackgroundTextColor: {
-    color: 'white'
-  }
+    textAlign: 'center',
+    color: 'white',
+    textShadow: '0px 0px 6px rgba(255,255,255,0.7)',
+  },
 }));
 
 export default useStyles;

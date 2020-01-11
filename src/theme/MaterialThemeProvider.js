@@ -1,11 +1,16 @@
 import React, { useContext } from 'react';
-import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
+import {
+  createMuiTheme,
+  responsiveFontSizes,
+  ThemeProvider,
+  makeStyles,
+} from '@material-ui/core/styles';
 import ThemeContext from './themeContext';
 
 export default function MaterialThemeProvider(props) {
   const themeContext = useContext(ThemeContext);
-  
-  const theme = createMuiTheme({
+
+  let theme = createMuiTheme({
     palette: {
       type: themeContext.themeType,
       primary: {
@@ -22,12 +27,16 @@ export default function MaterialThemeProvider(props) {
       },
     },
   });
+
+  theme = responsiveFontSizes(theme);
+
   const useStyles = makeStyles(() => ({
     root: {
       backgroundColor: theme.palette.background.default,
       color: theme.palette.text.primary,
     },
   }));
+
   const styles = useStyles();
 
   return (
