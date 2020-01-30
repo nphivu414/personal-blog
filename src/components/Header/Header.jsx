@@ -22,9 +22,11 @@ import useStyles from './style';
 function Header(props) {
   const classes = useStyles();
   const theme = useContext(ThemeContext);
-  const { title, bannerImage } = props;
+  const { title, bannerImage, window } = props;
   const { themeType, changeThemeType } = theme;
-  const trigger = useScrollTrigger({ target: window });
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+  });
 
   function handleChange(e) {
     if (themeType === 'dark') {
