@@ -2,7 +2,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
-    // `gatsby-plugin-material-ui`,
+    `gatsby-plugin-material-ui`,
     `gatsby-plugin-root-import`,
     `gatsby-plugin-typescript`,
     {
