@@ -12,7 +12,7 @@ interface BlogIndexProps {
   location: string,
 }
 
-const BlogIndex: React.FunctionComponent<BlogIndexProps> = (props) => {
+const BlogIndex: React.FunctionComponent<BlogIndexProps> = () => {
   return (
     <Provider store={store}>
       <MaterialThemeProvider>

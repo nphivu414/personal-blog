@@ -3,13 +3,11 @@ import { Avatar } from '@material-ui/core';
 import { rhythm } from 'src/utils/typography';
 import useStyles from './style';
 
-function Bio ({ settings }) {
+function Bio({ settings }) {
   const classes = useStyles();
   const {
-    author_avatar: {
-      imgix_url
-    },
-    author_name
+    author_avatar: { imgix_url },
+    author_name,
   } = settings;
   return (
     <div
@@ -28,7 +26,7 @@ function Bio ({ settings }) {
           height: rhythm(2),
         }}
       /> */}
-      <Avatar alt={author_name} src={imgix_url} className={classes.avatar}/>
+      <Avatar alt={author_name} src={imgix_url} className={classes.avatar} />
       <div dangerouslySetInnerHTML={{ __html: settings.author_bio }} />
     </div>
   );
