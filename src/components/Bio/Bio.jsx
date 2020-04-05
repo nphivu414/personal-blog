@@ -5,10 +5,10 @@ import useStyles from './style';
 
 function Bio({ settings }) {
   const classes = useStyles();
-  const {
-    author_avatar: { imgix_url },
-    author_name,
-  } = settings;
+  const { author_avatar, author_name } = settings;
+
+  const avatarUrl = author_avatar && author_avatar.imgix_url;
+
   return (
     <div
       style={{
@@ -26,8 +26,12 @@ function Bio({ settings }) {
           height: rhythm(2),
         }}
       /> */}
-      <Avatar alt={author_name} src={imgix_url} className={classes.avatar} />
-      <div dangerouslySetInnerHTML={{ __html: settings.author_bio }} />
+      {avatarUrl && (
+        <Avatar alt={author_name} src={avatarUrl} className={classes.avatar} />
+      )}
+      {settings.author_bio && (
+        <div dangerouslySetInnerHTML={{ __html: settings.author_bio }} />
+      )}
     </div>
   );
 }
